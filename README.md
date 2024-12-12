@@ -1,0 +1,41 @@
+**Project Proposal**
+
+**Problem Statement:**
+This project aims to create an FIU-themed, web-based chat application where users can register, chat, view stored messages, and clear chat history. The primary goal is to provide a simple chat experience with multiple concurrent users while maintaining a lightweight, accessible interface.
+
+**Proposed Solution:**
+FIU Panther Chat will use Flask as the backend framework, combined with JavaScript and CSS, for an interactive front-end experience. The application will support user registration, chat history viewing, and chat deletion for a streamlined, texting-style interface, all styled in FIU’s blue and gold.
+
+**Technology Choices:**
+- **Flask (Python):** For managing server requests and routing.
+- **JavaScript:** For real-time front-end interactivity and updates.
+- **Gunicorn:** For concurrency management, using multiple workers to allow the server to handle concurrent requests.
+
+---
+
+**Implementation Report**
+
+**Code Structure:**
+The primary application code resides in `app.py`, handling core server functions: user registration, message handling, and chat history management. Routes manage actions like registering usernames (`/register`), sending messages (`/chat`), retrieving messages (`/messages/<username>`), and clearing messages (`/delete/<username>`).
+
+**Concurrency Model:**
+Concurrency is managed using Gunicorn’s worker processes (e.g., `-w 4` for four workers), allowing concurrent request handling. Thread safety is ensured by using `client_lock` around shared resources, ensuring multiple requests do not interfere with each other while accessing or modifying shared data like `users` and `chat_histories`.
+
+**Challenges Encountered:**
+In-memory storage limits data persistence to single sessions, meaning all data resets if the server restarts. While this is suitable for a prototype, a database would be necessary for production. Ensuring smooth, real-time updates with JavaScript `fetch()` was another consideration, with polling used to keep updates consistent.
+
+---
+
+**Testing Report**
+
+**Testing Process:**
+Testing focused on validating core features through multiple user sessions, simulated in different browser tabs, to verify concurrent message handling, accurate chat history display, and smooth user experience.
+
+**Test Cases:**
+- **User Registration:** Verified that users could register without duplications and that all usernames are displayed in the sidebar.
+- **Concurrent Messaging:** Tested that multiple users could send and receive messages without delays or errors.
+- **Conversation Deletion:** Confirmed that the Clear Chat button deleted only the intended user’s history.
+- **Real-Time Updates:** Checked that messages updated in real-time without refreshing the page.
+
+**Results:**
+The application performed as expected, handling concurrent interactions effectively and responding reliably to each user’s input. Future improvements could include adding a persistent database and automated testing for streamlined development and maintenance.
