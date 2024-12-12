@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concurrent Web Server</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Concurrent Web Server</h1>
+        <p>Send a message to the server and download a sample file:</p>
+        <form action="/message" method="post">
+            <label for="message">Enter a message:</label>
+            <input type="text" id="message" name="message" placeholder="Type your message here..." required>
+            <button type="submit">Send Message</button>
+        </form>
+        <a class="static-link" href="/static/example.txt" download>Download Example File</a>
+        <div class="message">
+            <p>* Your message will be processed by the server concurrently.</p>
+        </div>
+    </div>
+</body>
+</html>
