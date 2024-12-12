@@ -12,7 +12,14 @@ FIU Panther Chat will use Flask as the backend framework, combined with JavaScri
 - **Gunicorn:** For concurrency management, using multiple workers to allow the server to handle concurrent requests.
 
 ---
+## Demo Video 🎥
 
+Click the video below to watch a video demo and full breakdown of the project:
+
+
+https://github.com/user-attachments/assets/0494738e-0779-495c-a373-9d0267be119a
+
+---
 **Implementation Report**
 
 **Code Structure:**
